@@ -25,7 +25,8 @@ generate a sequence of Gaussian mixture model (GMM) summary estimates.
 The maximum number of components of the GMM summaries is defined as
 *K*<sub>max</sub> = 10.
 ```R
-DPM.galaxy = dcpossum.DPM.dir(y.data.app, kmax = 10, quant.sample = 1000, k0 = 1/10, pred.f = TRUE)
+DPM.galaxy = dcpossum.DPM.dir(y.data.app, kmax = 10, quant.sample = 1000, 
+                              k0 = 1/10, pred.f = TRUE)
 ```
 The posterior distribution on the number of components or groups for the
 Dirichlet process is given in the plot below:
@@ -38,7 +39,8 @@ Below is the discrepancy function plot indicating that a GMM summary
 with four components provides a good approximation to the predictive
 distribution of the original model under a KL divergence.
 ```R
-DPM_comp_galaxy = plot.possum.uni(DPM.galaxy[[1]], kmax = 10, sel.K = FALSE, y.lim = c(-1.1,0.4))
+DPM_comp_galaxy = plot.possum.uni(DPM.galaxy[[1]], kmax = 10, 
+                                  sel.K = FALSE, y.lim = c(-1.1,0.4))
 
 DPM_comp_galaxy
 ```
@@ -64,9 +66,9 @@ summary, in which the red line is the average of this summary.
 
 ```R
 plots.possum.exemp.DPM = plot.possum.quant(possum.DPM.galaxy, K.sel = K_star, 
-                                               scale.plot = FALSE, model = "DPM",
-                                               y.data.app, index.possum = FALSE, 
-                                               index.pred = "galaxy")
+                                           scale.plot = FALSE, model = "DPM",
+                                           y.data.app, index.possum = FALSE, 
+                                           index.pred = "galaxy")
 
 plots.possum.exemp.DPM$dens.summ
 ```
@@ -79,16 +81,20 @@ In the plot below we display the cluster allocation estimate and
 posterior summary cluster allocation.
 
 ```R
-possum_clust = dc.possum.clust.uni(DPM.galaxy, y.data.app, K.sel = K_star, km = TRUE)
+possum_clust = dc.possum.clust.uni(DPM.galaxy, y.data.app, 
+                                  K.sel = K_star, km = TRUE)
 
-dat.clust.DPM = process_clustering_uni(DPM.galaxy[[6]], possum_clust, K_star, y.data.app)
+dat.clust.DPM = process_clustering_uni(DPM.galaxy[[6]], possum_clust, 
+                                       K_star, y.data.app)
 
 plot.galaxy.DPM = create_custom_plot(dat.clust.DPM, plots.possum.exemp.DPM$dens.summ,
-                                        k_star = K_star, y.min.plot = -0.05, y.max.plot = 0.3, 
-                                        y.c = -0.012, y.k = -0.03, text_plot = "Velocities of Galaxies")
+                                     k_star = K_star, y.min.plot = -0.05, 
+                                     y.max.plot = 0.3, y.c = -0.012, y.k = -0.03, 
+                                     text_plot = "Velocities of Galaxies")
 p.legend <- ggdraw() +
       draw_plot(plot.galaxy.DPM) +  # Your main plot
-      draw_plot(plots.possum.exemp.DPM$legend, x = 0.1, y = 0.6, width = 0.25, height = 0.25) 
+      draw_plot(plots.possum.exemp.DPM$legend, x = 0.1, 
+                y = 0.6, width = 0.25, height = 0.25) 
 
 plot.galaxy.DPM
 ```
