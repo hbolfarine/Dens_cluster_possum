@@ -44,7 +44,7 @@ DPM_comp_galaxy = plot.possum.uni(DPM.galaxy[[1]], kmax = 10,
 
 DPM_comp_galaxy
 ```
-![](dirichlet_dens_possum_files/figure-markdown_strict/unnamed-chunk-3-1.png)
+![](figure-markdown_strict/unnamed-chunk-3-1.png)
 
 ### 3. Posterior summarization
 
@@ -73,7 +73,7 @@ plots.possum.exemp.DPM = plot.possum.quant(possum.DPM.galaxy, K.sel = K_star,
 plots.possum.exemp.DPM$dens.summ
 ```
 
-![](dirichlet_dens_possum_files/figure-markdown_strict/unnamed-chunk-6-1.png)
+![](figure-markdown_strict/unnamed-chunk-6-1.png)
 
 ### 4. Posterior cluster summaries plot
 
@@ -98,4 +98,4 @@ p.legend <- ggdraw() +
 
 plot.galaxy.DPM
 ```
-![](dirichlet_dens_possum_files/figure-markdown_strict/unnamed-chunk-8-1.png)
+![](figure-markdown_strict/unnamed-chunk-8-1.png)
