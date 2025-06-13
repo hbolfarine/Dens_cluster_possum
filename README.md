@@ -1,8 +1,8 @@
 ## Repository for density and cluster summaries for Bayesian models
 
-This repository is associated with the paper “Lower-dimensional
+This repository is associated with the paper *“Lower-dimensional
 posterior density and cluster summaries for overparameterized Bayesian
-models,” see arXiv, and provides codes and tutorials on one of the
+models,”* see [arXiv](https://arxiv.org/abs/2506.09850), and provides codes and tutorials on one of the
 numerical examples.
 
 This tutorial contains `R` code to perform the analysis of the simple
@@ -11,7 +11,8 @@ recommend executing the code below in the order in which it is
 presented, but changes can be made in the solution path length and in
 the size of the credible interval of the posterior summary.
 
-We apply our method to analyze the galaxy (REFER) data.
+We apply our method to analyze the galaxy data.
+
 ```R
 # Loading the data
 y.data.app = data_sim_func("galaxy")
@@ -39,9 +40,8 @@ Below is the discrepancy function plot indicating that a GMM summary
 with four components provides a good approximation to the predictive
 distribution of the original model under a KL divergence.
 ```R
-DPM_comp_galaxy = plot.possum.uni(DPM.galaxy[[1]], kmax = 10, 
-                                  sel.K = FALSE, y.lim = c(-1.1,0.4))
-
+DPM_comp_galaxy = plot.possum.uni(DPM.galaxy[[1]], kmax = 10, sel.K = FALSE, 
+                                  y.lim = c(-1.1,0.4))
 DPM_comp_galaxy
 ```
 ![](figure-markdown_strict/unnamed-chunk-3-1.png)
@@ -69,11 +69,9 @@ plots.possum.exemp.DPM = plot.possum.quant(possum.DPM.galaxy, K.sel = K_star,
                                            scale.plot = FALSE, model = "DPM",
                                            y.data.app, index.possum = FALSE, 
                                            index.pred = "galaxy")
-
 plots.possum.exemp.DPM$dens.summ
 ```
-
-![](figure-markdown_strict/unnamed-chunk-6-1.png)
+<img src="figure-markdown_strict/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
 
 ### 4. Posterior cluster summaries plot
 
@@ -81,21 +79,22 @@ In the plot below we display the cluster allocation estimate and
 posterior summary cluster allocation.
 
 ```R
-possum_clust = dc.possum.clust.uni(DPM.galaxy, y.data.app, 
-                                  K.sel = K_star, km = TRUE)
+possum_clust = dc.possum.clust.uni(DPM.galaxy, y.data.app, K.sel = K_star, km = TRUE)
 
-dat.clust.DPM = process_clustering_uni(DPM.galaxy[[6]], possum_clust, 
-                                       K_star, y.data.app)
+dat.clust.DPM = process_clustering_uni(DPM.galaxy[[6]], possum_clust, K_star, y.data.app)
 
-plot.galaxy.DPM = create_custom_plot(dat.clust.DPM, plots.possum.exemp.DPM$dens.summ,
+plot.galaxy.DPM = create_custom_plot(dat.clust.DPM,
+                                     plots.possum.exemp.DPM$dens.summ,
                                      k_star = K_star, y.min.plot = -0.05, 
-                                     y.max.plot = 0.3, y.c = -0.012, y.k = -0.03, 
+                                     y.max.plot = 0.3, 
+                                     y.c = -0.012, y.k = -0.03, 
                                      text_plot = "Velocities of Galaxies")
-p.legend <- ggdraw() +
-      draw_plot(plot.galaxy.DPM) +  # Your main plot
-      draw_plot(plots.possum.exemp.DPM$legend, x = 0.1, 
-                y = 0.6, width = 0.25, height = 0.25) 
 
-plot.galaxy.DPM
+p.legend <- ggdraw() +
+    draw_plot(plot.galaxy.DPM) +  # Your main plot
+    draw_plot(plots.possum.exemp.DPM$legend, x = 0.1, y = 0.6, 
+              width = 0.25, height = 0.25) 
+
+p.legend
 ```
-![](figure-markdown_strict/unnamed-chunk-8-1.png)
+<img src="figure-markdown_strict/unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
