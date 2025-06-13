@@ -11,6 +11,8 @@ recommend executing the code below in the order in which it is
 presented, but changes can be made in the solution path length and in
 the size of the credible interval of the posterior summary.
 
+------------------------
+
 We apply our method to analyze the galaxy data.
 
 ```R
