@@ -22,6 +22,16 @@ set.seed(1800)
 ```
 ### 1. Run the method
 
+Necessary files:
+```R
+source("source/dcpossum_dens_comp.R")
+source("source/dcpossum_sim_data_mix.R")
+source("source/dcpossum_plots.R")
+source("source/dcpossum_unc.R")
+source("source/func_pred_laplace_temp.R")
+source("source/dcpossum_clust.R")
+```
+
 In this first step we estimate the density using Dirichlet process
 mixture models (REFER), using the `dirichletprocess` package. We then
 generate a sequence of Gaussian mixture model (GMM) summary estimates.
